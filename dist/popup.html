@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stock Health Analyzer</title>
+    <link href="output.css" rel="stylesheet" />
+    <style></style>
+    <style>
+      body {
+        width: 380px;
+        font-family: "Inter", sans-serif;
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.4s ease-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 p-4">
+    <div class="flex items-center justify-between mb-6">
+      <h1 class="text-xl font-extrabold text-slate-800 tracking-tight italic">
+        STOCK<span class="text-blue-600">Rasmus</span>
+      </h1>
+      <button
+        id="fetchBtn"
+        class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black py-2 px-5 rounded-full transition-all shadow-lg active:scale-95 tracking-widest"
+      >
+        ANALYZE
+      </button>
+    </div>
+
+    <div id="score-card" class="hidden animate-fade-in">
+      <div
+        class="bg-white rounded-[2rem] p-6 shadow-xl shadow-blue-100/50 border border-slate-100 mb-4 flex flex-col items-center"
+      >
+        <div
+          id="score-box"
+          class="w-24 h-24 rounded-full flex flex-col items-center justify-center text-white shadow-inner mb-3 transition-all duration-700"
+        >
+          <span id="score-value" class="text-4xl font-black">--</span>
+          <span
+            class="text-[9px] uppercase font-bold opacity-70 tracking-tighter"
+            >Health Score</span
+          >
+        </div>
+        <div
+          id="status-badge"
+          class="font-black text-xs uppercase tracking-widest"
+        >
+          --
+        </div>
+        <div
+          id="mcap-text"
+          class="text-[10px] text-slate-400 mt-1 font-medium italic"
+        ></div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
+          <p
+            class="text-[9px] uppercase font-black text-slate-400 mb-1 tracking-wider"
+          >
+            Profitability
+          </p>
+          <div
+            id="profitability-score"
+            class="text-lg font-extrabold text-slate-800"
+          >
+            --
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
+          <p
+            class="text-[9px] uppercase font-black text-slate-400 mb-1 tracking-wider"
+          >
+            Growth
+          </p>
+          <div id="growth-score" class="text-lg font-extrabold text-slate-800">
+            --
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
+          <p
+            class="text-[9px] uppercase font-black text-slate-400 mb-1 tracking-wider"
+          >
+            Stability
+          </p>
+          <div
+            id="financial-score"
+            class="text-lg font-extrabold text-slate-800"
+          >
+            --
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
+          <p
+            class="text-[9px] uppercase font-black text-slate-400 mb-1 tracking-wider"
+          >
+            Value
+          </p>
+          <div
+            id="valuation-score"
+            class="text-lg font-extrabold text-slate-800"
+          >
+            --
+          </div>
+        </div>
+      </div>
+
+      <div id="flags" class="mt-4 space-y-2"></div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
