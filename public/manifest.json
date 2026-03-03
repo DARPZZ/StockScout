@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Advanced Long-Term Stock Analyzer",
+  "name": "Long-Term Stock Analyzer",
   "version": "1.0",
-  "description": "Ultra-advanced long-term investing model with popup",
+  "description": "long-term investing model with popup",
   "permissions": ["activeTab", "scripting"],
   "action": {
     "default_popup": "popup.html",
