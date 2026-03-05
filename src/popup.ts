@@ -12,13 +12,7 @@ function checkIfKeyExists(keytolookfor)
 {
     var returnBool = false
     chrome.storage.local.get([keytolookfor]).then((result) => {
-        if(result[keytolookfor])
-        {
-            returnBool = true
-        }else
-        {
-            returnBool = false
-        } 
+        result[keytolookfor]? returnBool = true : returnBool = false;
     });
     return returnBool
 } 
