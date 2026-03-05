@@ -3,15 +3,46 @@ document.getElementById("fetchBtn").addEventListener("click", () => {
         chrome.tabs.sendMessage(tabs[0].id, {action: "sayHey"}, (response) => {
             if (response && response.data) {
                 renderAnalysis(response.data);
+                setLocalStorage(response)
             }
         });
     });
 });
+function checkIfKeyExists(keytolookfor)
+{
+    var returnBool = false
+    chrome.storage.local.get([keytolookfor]).then((result) => {
+        if(result[keytolookfor])
+        {
+            returnBool = true
+        }else
+        {
+            returnBool = false
+        } 
+    });
+    return returnBool
+} 
+function setLocalStorage(response) {
+    
+    var responseData = response.data.companyName;
+    if(checkIfKeyExists(responseData))
+    {return}
+    var responseDataScore = Math.round(parseFloat(response.data.score))
+    var aktieværdi = response.data.stats.find(x => x.aktieværdi)?.aktieværdi;
+    var aktieværdi = response.data.stats.find(x => x.aktieværdi)?.aktieværdi;
+    var date = response.data.stats.find(x=>x.date)?.date
+    chrome.storage.local.set({
+    [responseData]: {
+        responseDataScore: responseDataScore,
+        aktieværdi: aktieværdi,
+        lookedAtDate: date
+    }
+    });
+}
 
 function renderAnalysis(analysis) {
     const scoreCard = document.getElementById('score-card');
     if (!scoreCard) return;
-    console.log(analysis)
     scoreCard.classList.remove('hidden');
     const scoreVal = Math.round(parseFloat(analysis.score));
     
